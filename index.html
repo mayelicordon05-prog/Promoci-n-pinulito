@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pollo Pinulito | Promoción Exclusiva en la App</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    /* ==========================================================================
+       VARIABLES Y RESET
+       Paleta oficial de Pollo Pinulito: Rojo, Amarillo y Blanco
+       ========================================================================== */
+    :root {
+      --color-primary: #D81E05;        /* Rojo vibrante Pinulito */
+      --color-primary-dark: #B31400;   /* Rojo oscuro para bordes y sombras */
+      --color-primary-light: #FF3B20;  /* Rojo claro para gradientes */
+      --color-secondary: #FFC72C;      /* Amarillo dorado apetitoso */
+      --color-secondary-light: #FFE37E;/* Amarillo suave */
+      --color-secondary-hover: #EBB015;/* Amarillo oscuro */
+      --color-white: #FFFFFF;
+      --color-bg: #F8F5F0;             /* Fondo cálido limpio */
+      --color-text-dark: #1E1A17;      /* Texto principal casi negro */
+      --color-text-muted: #665F59;     /* Texto secundario suave */
+      --color-card: #FFFFFF;
+      --color-success: #10B981;
+      --shadow-sm: 0 2px 8px rgba(216, 30, 5, 0.08);
+      --shadow-md: 0 6px 20px rgba(216, 30, 5, 0.12);
+      --shadow-lg: 0 14px 34px rgba(216, 30, 5, 0.18);
+      --shadow-button: 0 8px 24px rgba(216, 30, 5, 0.35);
+      --radius-sm: 12px;
+      --radius-md: 18px;
+      --radius-lg: 24px;
+      --radius-full: 9999px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: radial-gradient(circle at 50% 10%, #FFF2CC 0%, #F5EAE0 50%, #ECE1D5 100%);
+      color: var(--color-text-dark);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0;
+      margin: 0;
+      line-height: 1.45;
+    }
+
+    /* ==========================================================================
+       CONTENEDOR DE LA APP (ESTILO MÓVIL)
+       Optimizado tanto para celulares como para vista centrada en PC/Tablet
+       ========================================================================== */
+    .app-screen {
+      width: 100%;
+      max-width: 440px;
+      min-height: 100vh;
+      background: #FFFFFF;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 25px 60px rgba(45, 10, 5, 0.18), 0 0 0 1px rgba(0, 0, 0, 0.04);
+      overflow-x: hidden;
+    }
+
+    @media (min-width: 480px) {
+      body {
+        padding: 24px 16px;
+      }
+      .app-screen {
+        min-height: 900px;
+        border-radius: 36px;
+        border: 8px solid #231F20;
+        box-shadow: 0 30px 80px rgba(0, 0, 0, 0.28), 0 0 0 2px rgba(255, 255, 255, 0.2);
+      }
+    }
+
+    /* BARRA DE ESTADO SUPERIOR (LOOK NATIVO DE CELULAR) */
+    .status-bar {
+      height: 38px;
+      padding: 10px 22px 0 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      background: #FFFFFF;
+      z-index: 20;
+    }
+
+    .status-bar-icons {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .status-bar-icons svg {
+      width: 15px;
+      height: 15px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       HEADER PRINCIPAL CON LOGO Y MASCOTA
+       ========================================================================== */
+    .app-header {
+      background: #FFFFFF;
+      padding: 8px 18px 12px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 30;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-container {
+      width: 46px;
+      height: 46px;
+      background: #FFFFFF;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(216, 30, 5, 0.15);
+      border: 1.5px solid #FFF0ED;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .logo-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      transform: scale(1.08);
+    }
+
+    .brand-title-wrap {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 19px;
+      font-weight: 900;
+      letter-spacing: -0.5px;
+      color: var(--color-primary);
+      line-height: 1.1;
+      text-transform: uppercase;
+    }
+
+    .brand-name span {
+      color: var(--color-secondary-hover);
+    }
+
+    .brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 10px;
+      font-weight: 800;
+      color: #92400E;
+      background: #FEF3C7;
+      padding: 2px 7px;
+      border-radius: 20px;
+      margin-top: 2px;
+      width: fit-content;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .mascot-avatar {
+      width: 44px;
+      height: 44px;
+      background: radial-gradient(circle, #FFE37E 30%, #FFC72C 100%);
+      border: 2px solid #FFFFFF;
+      box-shadow: 0 3px 10px rgba(235, 176, 21, 0.4);
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .mascot-avatar:hover {
+      transform: scale(1.08) rotate(5deg);
+    }
+
+    .mascot-avatar img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+
+    /* ==========================================================================
+       CINTILLO DE ALERTA EXCLUSIVA (REQUERIDO)
+       “Solo hoy en la app: promoción exclusiva”
+       ========================================================================== */
+    .exclusive-promo-ribbon {
+      background: linear-gradient(90deg, #D81E05 0%, #F5222D 50%, #D81E05 100%);
+      color: #FFFFFF;
+      padding: 10px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      text-align: center;
+      box-shadow: 0 4px 14px rgba(216, 30, 5, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .exclusive-promo-ribbon::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 70%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      animation: ribbonShine 3.5s infinite;
+    }
+
+    @keyframes ribbonShine {
+      0% { left: -100%; }
+      30%, 100% { left: 160%; }
+    }
+
+    .ribbon-icon {
+      background: var(--color-secondary);
+      color: var(--color-primary-dark);
+      width: 22px;
+      height: 22px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 900;
+      flex-shrink: 0;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    .ribbon-text {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: -0.2px;
+      text-transform: uppercase;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+    }
+
+    .ribbon-highlight {
+      background: var(--color-secondary);
+      color: #781002;
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 900;
+      margin-left: 3px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+      display: inline-block;
+    }
+
+    /* ==========================================================================
+       CONTENIDO PRINCIPAL SCROLLABLE
+       ========================================================================== */
+    .app-body {
+      padding: 14px 16px 120px 16px; /* Espacio para barra flotante de botones */
+      background: #FAF8F5;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    /* CUENTA REGRESIVA DE URGENCIA */
+    .countdown-bar {
+      background: #FFFFFF;
+      border: 1.5px dashed #FFC72C;
+      border-radius: var(--radius-sm);
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .countdown-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #8C5300;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .countdown-clock {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--color-primary);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .countdown-unit {
+      background: #FFF0ED;
+      padding: 2px 5px;
+      border-radius: 5px;
+      font-size: 11px;
+    }
+
+    /* ==========================================================================
+       TARJETA HERO DEL COMBO (VISUALMENTE IMPACTANTE)
+       ========================================================================== */
+    .combo-hero-card {
+      background: #FFFFFF;
+      border-radius: var(--radius-lg);
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      position: relative;
+      border: 2px solid #FFF3D6;
+      overflow: hidden;
+    }
+
+    .hero-bg-accent {
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 140px;
+      height: 140px;
+      background: radial-gradient(circle, #FFE79A 0%, rgba(255, 231, 154, 0) 70%);
+      border-radius: 50%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* IMAGEN DEL COMBO DE POLLO FRITO */
+    .combo-image-wrapper {
+      position: relative;
+      width: 100%;
+      height: 235px;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #F1ECE6;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+      z-index: 2;
+    }
+
+    .combo-image-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .combo-hero-card:hover .combo-image-wrapper img {
+      transform: scale(1.04);
+    }
+
+    /* BADGES SUPERPUESTOS EN LA IMAGEN */
+    .badge-discount {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: var(--color-primary);
+      color: #FFFFFF;
+      font-size: 12px;
+      font-weight: 900;
+      padding: 5px 11px;
+      border-radius: var(--radius-full);
+      box-shadow: 0 4px 12px rgba(216, 30, 5, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      letter-spacing: -0.2px;
+      z-index: 5;
+    }
+
+    .badge-crunchy {
+      position: absolute;
+      bottom: 12px;
+      left: 12px;
+      background: rgba(25, 20, 18, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      color: var(--color-secondary);
+      font-size: 11px;
+      font-weight: 800;
+      padding: 5px 10px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      z-index: 5;
+      border: 1px solid rgba(255, 199, 44, 0.4);
+    }
+
+    /* MASCOTA FLOTANTE EN ESQUINA INFERIOR */
+    .mascot-peeking {
+      position: absolute;
+      bottom: 6px;
+      right: 10px;
+      width: 72px;
+      height: 72px;
+      z-index: 6;
+      filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.3));
+      animation: mascotBounce 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    @keyframes mascotBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .mascot-peeking img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* PRECIO Y RATING */
+    .combo-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 14px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .price-box {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .current-price {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--color-primary);
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .old-price {
+      font-size: 15px;
+      font-weight: 600;
+      color: #9C958E;
+      text-decoration: line-through;
+    }
+
+    .rating-pill {
+      background: #FFF9E6;
+      border: 1px solid #FFE799;
+      color: #925400;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .rating-pill span.star {
+      color: #E2A000;
+    }
+
+    /* ==========================================================================
+       TÍTULO Y TEXTO EXPLICATIVO
+       ========================================================================== */
+    .combo-info {
+      margin-top: 12px;
+      position: relative;
+      z-index: 3;
+    }
+
+    .combo-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--color-text-dark);
+      letter-spacing: -0.6px;
+      line-height: 1.2;
+      margin-bottom: 8px;
+    }
+
+    .combo-description {
+      font-size: 13.5px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      font-weight: 500;
+    }
+
+    /* HIGHLIGHTS DE INGREDIENTES EN FORMA DE CHIPS */
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .ingredient-item {
+      background: #F8F5F1;
+      border-radius: var(--radius-sm);
+      padding: 8px 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid #EFE8DF;
+    }
+
+    .ingredient-icon {
+      font-size: 17px;
+      flex-shrink: 0;
+    }
+
+    .ingredient-text {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      line-height: 1.2;
+    }
+
+    /* ==========================================================================
+       TARJETA DE VENTAJAS DE LA APP (APP VALUE PROPOSITION)
+       ========================================================================== */
+    .app-perks-card {
+      background: linear-gradient(135deg, #FFF9EB 0%, #FFF2D1 100%);
+      border: 1.5px solid #FFE494;
+      border-radius: var(--radius-md);
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .perk-badge {
+      width: 40px;
+      height: 40px;
+      background: var(--color-secondary);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      flex-shrink: 0;
+      box-shadow: 0 4px 10px rgba(235, 176, 21, 0.35);
+    }
+
+    .perk-content {
+      flex: 1;
+    }
+
+    .perk-title {
+      font-size: 12px;
+      font-weight: 800;
+      color: #7A4300;
+      margin-bottom: 2px;
+    }
+
+    .perk-subtitle {
+      font-size: 11px;
+      color: #8F6020;
+      line-height: 1.3;
+      font-weight: 600;
+    }
+
+    /* BENEFICIOS RÁPIDOS */
+    .features-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .feature-chip {
+      flex: 1;
+      background: #FFFFFF;
+      border-radius: var(--radius-sm);
+      padding: 9px 8px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-chip-icon {
+      font-size: 16px;
+      margin-bottom: 3px;
+    }
+
+    .feature-chip-label {
+      font-size: 10.5px;
+      font-weight: 800;
+      color: var(--color-text-dark);
+    }
+
+    .feature-chip-desc {
+      font-size: 9.5px;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+
+    /* ==========================================================================
+       BARRA FIJA INFERIOR CON LOS BOTONES DE ACCIÓN (ESTILO APP MÓVIL)
+       Botón Principal: "Comprar ahora"
+       Botón Secundario: "Descargar app"
+       ========================================================================== */
+    .app-action-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 440px;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      padding: 12px 16px 16px 16px;
+      border-top: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 -8px 25px rgba(0, 0, 0, 0.08);
+      z-index: 50;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    @media (min-width: 480px) {
+      .app-action-bar {
+        position: absolute;
+        border-bottom-left-radius: 28px;
+        border-bottom-right-radius: 28px;
+      }
+    }
+
+    /* BOTÓN PRINCIPAL: "Comprar ahora" */
+    .btn-primary {
+      width: 100%;
+      height: 52px;
+      background: linear-gradient(135deg, #E51A24 0%, #D81E05 50%, #B31400 100%);
+      color: #FFFFFF;
+      border: none;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 18px;
+      cursor: pointer;
+      box-shadow: var(--shadow-button);
+      transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: -0.2px;
+    }
+
+    .btn-primary:active {
+      transform: scale(0.97);
+      box-shadow: 0 4px 14px rgba(216, 30, 5, 0.4);
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #F02832 0%, #E02108 50%, #BD1702 100%);
+      transform: translateY(-1px);
+    }
+
+    .btn-primary-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-primary-icon {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: #FFFFFF;
+    }
+
+    .btn-primary-price {
+      background: var(--color-secondary);
+      color: #7A1203;
+      padding: 5px 10px;
+      border-radius: 9px;
+      font-size: 14px;
+      font-weight: 900;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* BOTÓN SECUNDARIO: "Descargar app" */
+    .btn-secondary {
+      width: 100%;
+      height: 44px;
+      background: #FFFBEB;
+      color: #92400E;
+      border: 1.5px solid #FFD043;
+      border-radius: var(--radius-md);
+      font-family: inherit;
+      font-size: 13.5px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-secondary:hover {
+      background: #FEF3C7;
+      border-color: #F59E0B;
+    }
+
+    .btn-secondary:active {
+      transform: scale(0.98);
+    }
+
+    .btn-secondary svg {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* ==========================================================================
+       MODAL Y TOAST INTERACTIVO (EXPERIENCIA APP MÓVIL)
+       ========================================================================== */
+    .toast-alert {
+      position: fixed;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-100px);
+      background: #1E1A17;
+      color: #FFFFFF;
+      padding: 12px 18px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      z-index: 100;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s;
+      opacity: 0;
+      pointer-events: none;
+      font-size: 13px;
+      font-weight: 700;
+      width: 90%;
+      max-width: 380px;
+    }
+
+    .toast-alert.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .toast-icon {
+      width: 26px;
+      height: 26px;
+      background: var(--color-success);
+      color: #FFFFFF;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    /* PIE DE PÁGINA APP */
+    .app-footer-notice {
+      text-align: center;
+      font-size: 11px;
+      color: #9C958E;
+      margin-top: 6px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CONTENEDOR PRINCIPAL: EXPERIENCIA APP CELULAR -->
+  <main class="app-screen">
+
+    <!-- 1. BARRA DE ESTADO SUPERIOR (ESTILO CELULAR MODERNO) -->
+    <div class="status-bar" aria-hidden="true">
+      <span class="status-time" id="currentTime">12:30</span>
+      <div class="status-bar-icons">
+        <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 18.25A10.94 10.94 0 0 1 1 12C1 5.92 5.92 1 12 1s11 4.92 11 11c0 2.3-.7 4.43-1.9 6.2l-.62-.62A9.97 9.97 0 0 0 21 12c0-4.97-4.03-9-9-9zm0 4a5 5 0 0 0-5 5c0 1.25.46 2.39 1.22 3.28l.71-.71A3.97 3.97 0 0 1 8 12a4 4 0 0 1 4-4 4 4 0 0 1 4 4c0 .99-.36 1.9-.97 2.6l.71.71A4.97 4.97 0 0 0 17 12a5 5 0 0 0-5-5zm0 4a1 1 0 1 0 0 2 1 1 0 0 0 0-2z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98A16.88 16.88 0 0 0 12 4z"/></svg>
+        <svg viewBox="0 0 24 24"><path d="M16 4h-1V2.5C15 2.22 14.78 2 14.5 2h-5c-.28 0-.5.22-.5.5V4H8C6.9 4 6 4.9 6 6v14c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 16H9V6h6v14z"/></svg>
+      </div>
+    </div>
+
+    <!-- 2. LOGO EN LA PARTE SUPERIOR Y MASCOTA -->
+    <header class="app-header">
+      <div class="brand-group">
+        <!-- Logotipo Oficial Pollo Pinulito -->
+        <div class="logo-container" title="Pollo Pinulito">
+          <img src="logo-pinulito.png" alt="Logo Pollo Pinulito" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?w=100&auto=format&fit=crop&q=80';">
+        </div>
+        <div class="brand-title-wrap">
+          <h2 class="brand-name">PINULITO<span>.</span></h2>
+          <span class="brand-badge">⭐ Sabor 100% Chapín</span>
+        </div>
+      </div>
+
+      <!-- Mascota Oficial (Pollito Chef) -->
+      <div class="header-actions">
+        <div class="mascot-avatar" title="Pollito Chef Pinulito" onclick="showCheerToast()">
+          <img src="mascota-pinulito.png" alt="Mascota Pollo Pinulito" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/2972/2972185.png';">
+        </div>
+      </div>
+    </header>
+
+    <!-- 3. CINTILLO EXCLUSIVO OBLIGATORIO -->
+    <aside class="exclusive-promo-ribbon">
+      <div class="ribbon-icon">⚡</div>
+      <div class="ribbon-text">
+        Solo hoy en la app: <span class="ribbon-highlight">promoción exclusiva</span>
+      </div>
+    </aside>
+
+    <!-- 4. CUERPO DE LA APP -->
+    <div class="app-body">
+
+      <!-- Temporizador de urgencia -->
+      <div class="countdown-bar">
+        <div class="countdown-title">
+          <span>⏳</span> La oferta termina en:
+        </div>
+        <div class="countdown-clock" id="countdownTimer">
+          <span class="countdown-unit" id="cdHours">04</span>h :
+          <span class="countdown-unit" id="cdMinutes">28</span>m :
+          <span class="countdown-unit" id="cdSeconds">50</span>s
+        </div>
+      </div>
+
+      <!-- Tarjeta Hero del Combo de Pollo Frito -->
+      <section class="combo-hero-card">
+        <div class="hero-bg-accent"></div>
+
+        <!-- Imagen del Combo de Pollo Frito -->
+        <div class="combo-image-wrapper">
+          <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?auto=format&fit=crop&w=900&q=80" 
+               alt="Mega Combo de Pollo Frito Crujiente Pinulito"
+               loading="lazy">
+
+          <!-- Badges sobre la foto -->
+          <div class="badge-discount">🔥 -40% OFF</div>
+          <div class="badge-crunchy">🍗 Súper Crujiente</div>
+
+          <!-- Mascota Peeking alegre -->
+          <div class="mascot-peeking">
+            <img src="mascota-pinulito.png" alt="Pollito Pinulito">
+          </div>
+        </div>
+
+        <!-- Precio y Social Proof -->
+        <div class="combo-meta-row">
+          <div class="price-box">
+            <span class="current-price">Q 45.00</span>
+            <span class="old-price">Q 75.00</span>
+          </div>
+          <div class="rating-pill">
+            <span class="star">★</span> 4.9 (1.2k+ hoy)
+          </div>
+        </div>
+
+        <!-- TÍTULO PRINCIPAL Y TEXTO BREVE EXPLICATIVO -->
+        <div class="combo-info">
+          <h1 class="combo-title">¡Mega Combo Pinulazo Familiar!</h1>
+          <p class="combo-description">
+            Disfruta de 8 piezas de pollo frito extra doradito y crujiente con la receta secreta tradicional, acompañadas de papas fritas sazonadas, 4 panes calientes y gaseosa familiar de 1.5L. ¡Recién hecho a la orden!
+          </p>
+        </div>
+
+        <!-- Chips de lo que incluye el combo -->
+        <div class="ingredients-grid">
+          <div class="ingredient-item">
+            <span class="ingredient-icon">🍗</span>
+            <span class="ingredient-text">8 Piezas de Pollo Doradito</span>
+          </div>
+          <div class="ingredient-item">
+            <span class="ingredient-icon">🍟</span>
+            <span class="ingredient-text">Porción Grande de Papas</span>
+          </div>
+          <div class="ingredient-item">
+            <span class="ingredient-icon">🥖</span>
+            <span class="ingredient-text">4 Panes Calientitos</span>
+          </div>
+          <div class="ingredient-item">
+            <span class="ingredient-icon">🥤</span>
+            <span class="ingredient-text">Gaseosa Familiar 1.5L</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Beneficio exclusivo por pedir en la App -->
+      <section class="app-perks-card">
+        <div class="perk-badge">🎁</div>
+        <div class="perk-content">
+          <div class="perk-title">Cupón automático aplicado</div>
+          <div class="perk-subtitle">Envío gratis y salsa especial de cortesía por ordenar desde la app móvil.</div>
+        </div>
+      </section>
+
+      <!-- Fila de características rápidas -->
+      <div class="features-row">
+        <div class="feature-chip">
+          <div class="feature-chip-icon">⚡</div>
+          <div class="feature-chip-label">25-35 min</div>
+          <div class="feature-chip-desc">Entrega veloz</div>
+        </div>
+        <div class="feature-chip">
+          <div class="feature-chip-icon">🛵</div>
+          <div class="feature-chip-label">Delivery Gratis</div>
+          <div class="feature-chip-desc">Solo hoy en app</div>
+        </div>
+        <div class="feature-chip">
+          <div class="feature-chip-icon">🔒</div>
+          <div class="feature-chip-label">Pago Seguro</div>
+          <div class="feature-chip-desc">Efectivo o Tarjeta</div>
+        </div>
+      </div>
+
+      <p class="app-footer-notice">
+        Válido únicamente para pedidos realizados hoy a través de la aplicación oficial.
+      </p>
+
+    </div>
+
+    <!-- 5. BARRA INFERIOR FIJA CON BOTÓN PRINCIPAL Y SECUNDARIO -->
+    <nav class="app-action-bar">
+      <!-- Botón Principal: “Comprar ahora” -->
+      <button type="button" class="btn-primary" id="btnComprar" onclick="handleBuyAction()">
+        <div class="btn-primary-left">
+          <div class="btn-primary-icon">
+            <svg viewBox="0 0 24 24"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+          </div>
+          <span>Comprar ahora</span>
+        </div>
+        <span class="btn-primary-price">Q 45.00</span>
+      </button>
+
+      <!-- Botón Secundario: “Descargar app” -->
+      <button type="button" class="btn-secondary" id="btnDescargar" onclick="handleDownloadAction()">
+        <svg viewBox="0 0 24 24"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM17 13l-5 5-5-5h3V9h4v4h3z"/></svg>
+        <span>Descargar app</span>
+      </button>
+    </nav>
+
+    <!-- TOAST NOTIFICACIÓN INTERACTIVA -->
+    <div class="toast-alert" id="appToast">
+      <div class="toast-icon">✓</div>
+      <div class="toast-text" id="toastMessage">¡Listo! Combo agregado a tu orden</div>
+    </div>
+
+  </main>
+
+  <!-- ==========================================================================
+       SCRIPTS INTERACTIVOS (RELOJ, CONTADOR, ACCIONES DE BOTONES)
+       ========================================================================== */ -->
+  <script>
+    // 1. Reloj de hora real para la barra de estado del celular
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const timeElem = document.getElementById('currentTime');
+      if (timeElem) timeElem.textContent = `${hours}:${minutes}`;
+    }
+    updateClock();
+    setInterval(updateClock, 30000);
+
+    // 2. Contador regresivo dinámico para crear sentido de urgencia
+    let totalSeconds = 4 * 3600 + 28 * 60 + 50; // 04:28:50 inicial
+    function updateCountdown() {
+      if (totalSeconds <= 0) {
+        totalSeconds = 6 * 3600; // reiniciar a 6 horas
+      }
+      totalSeconds--;
+
+      const h = Math.floor(totalSeconds / 3600);
+      const m = Math.floor((totalSeconds % 3600) / 60);
+      const s = totalSeconds % 60;
+
+      document.getElementById('cdHours').textContent = String(h).padStart(2, '0');
+      document.getElementById('cdMinutes').textContent = String(m).padStart(2, '0');
+      document.getElementById('cdSeconds').textContent = String(s).padStart(2, '0');
+    }
+    setInterval(updateCountdown, 1000);
+
+    // 3. Notificación tipo Toast para interacción móvil
+    let toastTimeout;
+    function triggerToast(text, iconChar = '✓') {
+      const toast = document.getElementById('appToast');
+      const toastMsg = document.getElementById('toastMessage');
+      const toastIcon = toast.querySelector('.toast-icon');
+
+      toastMsg.textContent = text;
+      toastIcon.textContent = iconChar;
+      toast.classList.add('show');
+
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    // 4. Acción del Botón Principal: "Comprar ahora"
+    function handleBuyAction() {
+      const btn = document.getElementById('btnComprar');
+      btn.style.transform = 'scale(0.96)';
+      setTimeout(() => btn.style.transform = '', 150);
+
+      triggerToast('¡Mega Combo Pinulazo agregado! Abriendo checkout...', '🍗');
+    }
+
+    // 5. Acción del Botón Secundario: "Descargar app"
+    function handleDownloadAction() {
+      const btn = document.getElementById('btnDescargar');
+      btn.style.transform = 'scale(0.96)';
+      setTimeout(() => btn.style.transform = '', 150);
+
+      triggerToast('Redirigiendo a Google Play & App Store...', '📲');
+    }
+
+    // 6. Mensaje simpático al tocar la mascota
+    function showCheerToast() {
+      triggerToast('¡Pío pío! ¡El pollo más crujiente de Guate!', '🐥');
+    }
+  </script>
+</body>
+</html>
